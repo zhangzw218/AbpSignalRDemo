@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace SignalRDemo.EntityFrameworkCore
 {
@@ -9,14 +10,12 @@ namespace SignalRDemo.EntityFrameworkCore
         {
             Check.NotNull(builder, nameof(builder));
 
-            /* Configure your own tables/entities inside here */
 
-            //builder.Entity<YourEntity>(b =>
-            //{
-            //    b.ToTable(SignalRDemoConsts.DbTablePrefix + "YourEntities", SignalRDemoConsts.DbSchema);
-
-            //    //...
-            //});
+            builder.Entity<SignalRTest>(b =>
+            {
+                b.ToTable(SignalRDemoConsts.DbTablePrefix + "SignalRTest", SignalRDemoConsts.DbSchema);
+                b.ConfigureByConvention();
+            });
         }
     }
 }
