@@ -1,4 +1,4 @@
-﻿using SignalRDemo.Localization;
+﻿using SignalRDemo2.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
 namespace SignalRDemo.Web.Pages
@@ -9,7 +9,7 @@ namespace SignalRDemo.Web.Pages
     {
         protected SignalRDemoPageModel()
         {
-            LocalizationResourceType = typeof(SignalRDemoResource);
+            LocalizationResourceType = typeof(SignalRDemo2Resource);
         }
     }
 }

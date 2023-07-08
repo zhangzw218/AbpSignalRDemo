@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Razor.Internal;
-using SignalRDemo.Localization;
+using SignalRDemo2.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
 namespace SignalRDemo.Web.Pages
@@ -11,6 +11,6 @@ namespace SignalRDemo.Web.Pages
     public abstract class SignalRDemoPage : AbpPage
     {
         [RazorInject]
-        public IHtmlLocalizer<SignalRDemoResource> L { get; set; }
+        public IHtmlLocalizer<SignalRDemo2Resource> L { get; set; }
     }
 }

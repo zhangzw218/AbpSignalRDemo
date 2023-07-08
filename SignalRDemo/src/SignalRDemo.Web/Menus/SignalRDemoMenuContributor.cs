@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
-using SignalRDemo.Localization;
-using SignalRDemo.MultiTenancy;
+using SignalRDemo2.Localization;
+using SignalRDemo2.MultiTenancy;
 using Volo.Abp.TenantManagement.Web.Navigation;
 using Volo.Abp.UI.Navigation;
 
@@ -26,7 +26,7 @@ namespace SignalRDemo.Web.Menus
                 administration.TryRemoveMenuItem(TenantManagementMenuNames.GroupName);
             }
 
-            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<SignalRDemoResource>>();
+            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<SignalRDemo2Resource>>();
 
             context.Menu.Items.Insert(0, new ApplicationMenuItem("SignalRDemo.Home", l["Menu:Home"], "/"));
 

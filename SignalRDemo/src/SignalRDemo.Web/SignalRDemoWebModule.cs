@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SignalRDemo.EntityFrameworkCore;
-using SignalRDemo.Localization;
-using SignalRDemo.MultiTenancy;
+using SignalRDemo2.EntityFrameworkCore;
+using SignalRDemo2.Localization;
+using SignalRDemo2.MultiTenancy;
 using SignalRDemo.Web.Menus;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
@@ -37,13 +37,14 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using SignalRDemo2;
 
 namespace SignalRDemo.Web
 {
     [DependsOn(
-        typeof(SignalRDemoHttpApiModule),
-        typeof(SignalRDemoApplicationModule),
-        typeof(SignalRDemoEntityFrameworkCoreDbMigrationsModule),
+        typeof(SignalRDemo2HttpApiModule),
+        typeof(SignalRDemo2ApplicationModule),
+        typeof(SignalRDemo2EntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
@@ -60,11 +61,11 @@ namespace SignalRDemo.Web
             context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
             {
                 options.AddAssemblyResource(
-                    typeof(SignalRDemoResource),
-                    typeof(SignalRDemoDomainModule).Assembly,
-                    typeof(SignalRDemoDomainSharedModule).Assembly,
-                    typeof(SignalRDemoApplicationModule).Assembly,
-                    typeof(SignalRDemoApplicationContractsModule).Assembly,
+                    typeof(SignalRDemo2Resource),
+                    typeof(SignalRDemo2DomainModule).Assembly,
+                    typeof(SignalRDemo2DomainSharedModule).Assembly,
+                    typeof(SignalRDemo2ApplicationModule).Assembly,
+                    typeof(SignalRDemo2ApplicationContractsModule).Assembly,
                     typeof(SignalRDemoWebModule).Assembly
                 );
             });
@@ -119,10 +120,10 @@ namespace SignalRDemo.Web
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemoDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemoDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemoApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemoApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemo2DomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemo2DomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemo2ApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemo2ApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}SignalRDemo.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<SignalRDemoWebModule>(hostingEnvironment.ContentRootPath);
                 });
             }
@@ -133,7 +134,7 @@ namespace SignalRDemo.Web
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Get<SignalRDemoResource>()
+                    .Get<SignalRDemo2Resource>()
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );
@@ -160,7 +161,7 @@ namespace SignalRDemo.Web
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
-                options.ConventionalControllers.Create(typeof(SignalRDemoApplicationModule).Assembly);
+                options.ConventionalControllers.Create(typeof(SignalRDemo2ApplicationModule).Assembly);
             });
         }
 
