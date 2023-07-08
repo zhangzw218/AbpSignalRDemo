@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
+using SignalRDemo2;
 using Volo.Abp.AspNetCore.SignalR;
 using Volo.Abp.Identity;
 using Volo.Abp.Users;
@@ -13,27 +14,22 @@ namespace SignalRDemo.Web
     public class ChatHub : AbpHub
     {
         private readonly IIdentityUserRepository _identityUserRepository;
-        private readonly ISignalRTestRepository _signalRTestRepository;
+        private readonly ISignalRTestAppService _signalRTestAppService;
         private readonly ILookupNormalizer _lookupNormalizer;
 
         public ChatHub(IIdentityUserRepository identityUserRepository
             , ILookupNormalizer lookupNormalizer
-            , ISignalRTestRepository signalRTestRepository
+            , ISignalRTestAppService signalRTestAppService
             )
         {
             _identityUserRepository = identityUserRepository;
             _lookupNormalizer = lookupNormalizer;
-            _signalRTestRepository = signalRTestRepository;
+            _signalRTestAppService = signalRTestAppService;
         }
 
         public async Task SendMessage(string targetUserName, string message)
         {
-            var targetUser = await _signalRTestRepository.FindAsync(s => s.Name == targetUserName);
-            if (targetUser == null)
-            {
-                targetUser = new SignalRTest(targetUserName);
-                await _signalRTestRepository.InsertAsync(targetUser, true);
-            }
+            var targetUser = await _signalRTestAppService.GetOrCreateAsync(targetUserName);
 
             message = $"Id={targetUser.Id},Name={targetUser.Name}: {message}";
 
