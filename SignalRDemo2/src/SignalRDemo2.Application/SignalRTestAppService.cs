@@ -19,16 +19,32 @@ namespace SignalRDemo2
             _signalRTestRepository = signalRTestRepository;
         }
 
-        [UnitOfWork(true)]
+        //[UnitOfWork(true)]
+        //public async Task<SignalRTestDto> GetOrCreateAsync(string targetUserName)
+        //{
+        //    var result = await _signalRTestRepository.FindAsync(s => s.Name == targetUserName);
+        //    Logger.LogDebug("CurrentUnitOfWork.Id:{0}", CurrentUnitOfWork.Id);
+        //    if (result == null)
+        //    {
+        //        result = new SignalRTest(targetUserName);
+        //        await _signalRTestRepository.InsertAsync(result, true);
+        //        await CurrentUnitOfWork.CompleteAsync();
+        //    }
+        //    return ObjectMapper.Map<SignalRTest, SignalRTestDto>(result);
+        //}
+
         public async Task<SignalRTestDto> GetOrCreateAsync(string targetUserName)
         {
-            var result = await _signalRTestRepository.FindAsync(s=>s.Name == targetUserName);
-            Logger.LogDebug("CurrentUnitOfWork.Id:{0}",CurrentUnitOfWork.Id);
-            if (result == null)
+            var result = await _signalRTestRepository.FindAsync(s => s.Name == targetUserName);
+            using(var uow = UnitOfWorkManager.Begin())
             {
-                result = new SignalRTest(targetUserName);
-                await _signalRTestRepository.InsertAsync(result, true);
-                await CurrentUnitOfWork.CompleteAsync();
+                Logger.LogDebug("CurrentUnitOfWork.Id:{0}", CurrentUnitOfWork.Id);
+                if (result == null)
+                {
+                    result = new SignalRTest(targetUserName);
+                    await _signalRTestRepository.InsertAsync(result, true);
+                    await CurrentUnitOfWork.CompleteAsync();
+                }
             }
             return ObjectMapper.Map<SignalRTest, SignalRTestDto>(result);
         }
