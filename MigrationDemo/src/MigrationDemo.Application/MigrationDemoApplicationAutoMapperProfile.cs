@@ -13,6 +13,8 @@ namespace MigrationDemo
              * into multiple profile classes for a better organization. */
         CreateMap<TempRole, TempRoleDto>();
         CreateMap<CreateUpdateTempRoleDto, TempRole>(MemberList.Source);
+        CreateMap<TempUser, TempUserDto>();
+        CreateMap<CreateUpdateTempUserDto, TempUser>(MemberList.Source);
         }
     }
 }

@@ -29,6 +29,16 @@ namespace MigrationDemo.EntityFrameworkCore
 
             /* Configure more properties here */
         });
+
+
+        builder.Entity<TempUser>(b =>
+        {
+            b.ToTable(MigrationDemoConsts.DbTablePrefix + "TempUsers", MigrationDemoConsts.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
         }
     }
 }

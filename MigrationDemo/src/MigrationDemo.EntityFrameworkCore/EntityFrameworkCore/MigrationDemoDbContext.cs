@@ -27,6 +27,7 @@ namespace MigrationDemo.EntityFrameworkCore
          * Also map them inside MigrationDemoDbContextModelCreatingExtensions.ConfigureMigrationDemo
          */
     public DbSet<TempRole> TempRoles { get; set; }
+    public DbSet<TempUser> TempUsers { get; set; }
 
         public MigrationDemoDbContext(DbContextOptions<MigrationDemoDbContext> options)
             : base(options)

@@ -41,6 +41,7 @@ namespace MigrationDemo.EntityFrameworkCore
                  * default repositories only for aggregate roots */
                 options.AddDefaultRepositories(includeAllEntities: true);
             options.AddRepository<TempRole, TempRoleRepository>();
+            options.AddRepository<TempUser, TempUserRepository>();
             });
 
             Configure<AbpDbContextOptions>(options =>
