@@ -14,9 +14,9 @@ namespace MigrationDemo.EntityFrameworkCore
             MigrationDemoEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();
-
+            var mySqlConn = configuration.GetConnectionString("Default");
             var builder = new DbContextOptionsBuilder<MigrationDemoMigrationsDbContext>()
-                .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion);
+                .UseMySql(mySqlConn, MySqlServerVersion.LatestSupportedServerVersion);
 
             return new MigrationDemoMigrationsDbContext(builder.Options);
         }
