@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MigrationDemo.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
+using MigrationDemo.Test;
 
 namespace MigrationDemo.EntityFrameworkCore
 {
@@ -25,6 +26,7 @@ namespace MigrationDemo.EntityFrameworkCore
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside MigrationDemoDbContextModelCreatingExtensions.ConfigureMigrationDemo
          */
+    public DbSet<TempRole> TempRoles { get; set; }
 
         public MigrationDemoDbContext(DbContextOptions<MigrationDemoDbContext> options)
             : base(options)

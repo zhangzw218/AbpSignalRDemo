@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using MigrationDemo.Test;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace MigrationDemo.EntityFrameworkCore
 {
@@ -17,6 +19,16 @@ namespace MigrationDemo.EntityFrameworkCore
             //    b.ConfigureByConvention(); //auto configure for the base class props
             //    //...
             //});
+
+
+        builder.Entity<TempRole>(b =>
+        {
+            b.ToTable(MigrationDemoConsts.DbTablePrefix + "TempRoles", MigrationDemoConsts.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
         }
     }
 }

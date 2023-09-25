@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+using MigrationDemo.Test;
+using MigrationDemo.Test.Dtos;
+using AutoMapper;
 
 namespace MigrationDemo
 {
@@ -9,6 +11,8 @@ namespace MigrationDemo
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+        CreateMap<TempRole, TempRoleDto>();
+        CreateMap<CreateUpdateTempRoleDto, TempRole>(MemberList.Source);
         }
     }
 }
