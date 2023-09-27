@@ -28,7 +28,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -48,7 +48,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("DeletionTime");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -66,70 +66,11 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
                     b.ToTable("AppTempRoles");
-                });
-
-            modelBuilder.Entity("MigrationDemo.Test.TempUser", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid?>("TempRoleId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TempRoleId");
-
-                    b.ToTable("AppTempUsers");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -140,47 +81,49 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("ApplicationName")
                         .HasMaxLength(96)
-                        .HasColumnType("varchar(96)")
+                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
                         .HasColumnName("ApplicationName");
 
                     b.Property<string>("BrowserInfo")
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasColumnName("BrowserInfo");
 
                     b.Property<string>("ClientId")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("ClientId");
 
                     b.Property<string>("ClientIpAddress")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("ClientIpAddress");
 
                     b.Property<string>("ClientName")
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("ClientName");
 
                     b.Property<string>("Comments")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("Comments");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<string>("CorrelationId")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("CorrelationId");
 
                     b.Property<string>("Exceptions")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(4000)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasColumnName("Exceptions");
 
                     b.Property<int>("ExecutionDuration")
                         .HasColumnType("int")
@@ -190,12 +133,12 @@ namespace MigrationDemo.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<string>("HttpMethod")
                         .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
                         .HasColumnName("HttpMethod");
 
                     b.Property<int?>("HttpStatusCode")
@@ -215,11 +158,11 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("TenantId");
 
                     b.Property<string>("TenantName")
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Url")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("Url");
 
                     b.Property<Guid?>("UserId")
@@ -228,7 +171,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("UserName");
 
                     b.HasKey("Id");
@@ -259,22 +202,22 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("ExecutionTime");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<string>("MethodName")
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("MethodName");
 
                     b.Property<string>("Parameters")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)")
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4")
                         .HasColumnName("Parameters");
 
                     b.Property<string>("ServiceName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("ServiceName");
 
                     b.Property<Guid?>("TenantId")
@@ -311,7 +254,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("EntityId")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("EntityId");
 
                     b.Property<Guid?>("EntityTenantId")
@@ -320,11 +263,11 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("EntityTypeFullName")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("EntityTypeFullName");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<Guid?>("TenantId")
@@ -351,24 +294,24 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("NewValue")
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasColumnName("NewValue");
 
                     b.Property<string>("OriginalValue")
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasColumnName("OriginalValue");
 
                     b.Property<string>("PropertyName")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("PropertyName");
 
                     b.Property<string>("PropertyTypeFullName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("PropertyTypeFullName");
 
                     b.Property<Guid?>("TenantId")
@@ -391,7 +334,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -399,7 +342,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("CreationTime");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsAbandoned")
@@ -410,12 +353,12 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("JobArgs")
                         .IsRequired()
                         .HasMaxLength(1048576)
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("JobName")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("LastTryTime")
                         .HasColumnType("datetime(6)");
@@ -449,20 +392,20 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderKey")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderName")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -480,15 +423,15 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<string>("Description")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsStatic")
@@ -497,15 +440,15 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Regex")
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512)");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4");
 
                     b.Property<string>("RegexDescription")
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Required")
                         .HasColumnType("tinyint(1)");
@@ -553,11 +496,11 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDefault")
@@ -575,12 +518,12 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<string>("NormalizedName")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -601,11 +544,11 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ClaimType")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClaimValue")
                         .HasMaxLength(1024)
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("char(36)");
@@ -629,44 +572,44 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Action")
                         .HasMaxLength(96)
-                        .HasColumnType("varchar(96)");
+                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ApplicationName")
                         .HasMaxLength(96)
-                        .HasColumnType("varchar(96)");
+                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4");
 
                     b.Property<string>("BrowserInfo")
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512)");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientId")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientIpAddress")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<string>("CorrelationId")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<string>("Identity")
                         .HasMaxLength(96)
-                        .HasColumnType("varchar(96)");
+                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -674,14 +617,14 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("TenantName")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -711,7 +654,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -733,7 +676,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("Email");
 
                     b.Property<bool>("EmailConfirmed")
@@ -743,7 +686,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("EmailConfirmed");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -777,29 +720,29 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Name")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("NormalizedEmail");
 
                     b.Property<string>("NormalizedUserName")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("NormalizedUserName");
 
                     b.Property<string>("PasswordHash")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("PasswordHash");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(16)
-                        .HasColumnType("varchar(16)")
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
                         .HasColumnName("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -811,12 +754,12 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("SecurityStamp")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("SecurityStamp");
 
                     b.Property<string>("Surname")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasColumnName("Surname");
 
                     b.Property<Guid?>("TenantId")
@@ -832,7 +775,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasColumnName("UserName");
 
                     b.HasKey("Id");
@@ -856,11 +799,11 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ClaimType")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClaimValue")
                         .HasMaxLength(1024)
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -883,16 +826,16 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderKey")
                         .IsRequired()
                         .HasMaxLength(196)
-                        .HasColumnType("varchar(196)");
+                        .HasColumnType("varchar(196) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -958,18 +901,18 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
                         .HasColumnName("TenantId");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -985,13 +928,13 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(95)
-                        .HasColumnType("varchar(95)")
+                        .HasColumnType("varchar(95) CHARACTER SET utf8mb4")
                         .HasColumnName("Code");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1013,11 +956,11 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("DisplayName")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasColumnName("DisplayName");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -1085,12 +1028,12 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("AllowedAccessTokenSigningAlgorithms")
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1111,17 +1054,17 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
+                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("DisplayName")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Enabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -1141,7 +1084,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("ShowInDiscoveryDocument")
                         .HasColumnType("tinyint(1)");
@@ -1158,7 +1101,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApiResourceId", "Type");
 
@@ -1172,11 +1115,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Key")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApiResourceId", "Key", "Value");
 
@@ -1190,7 +1133,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Scope")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApiResourceId", "Scope");
 
@@ -1204,15 +1147,15 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
+                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime(6)");
@@ -1231,7 +1174,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1252,11 +1195,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
+                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("DisplayName")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Emphasize")
                         .HasColumnType("tinyint(1)");
@@ -1265,7 +1208,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -1285,7 +1228,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Required")
                         .HasColumnType("tinyint(1)");
@@ -1305,7 +1248,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApiScopeId", "Type");
 
@@ -1319,11 +1262,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Key")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApiScopeId", "Key", "Value");
 
@@ -1359,7 +1302,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("AllowedIdentityTokenSigningAlgorithms")
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("AlwaysIncludeUserClaimsInIdToken")
                         .HasColumnType("tinyint(1)");
@@ -1375,29 +1318,29 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("BackChannelLogoutUri")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientClaimsPrefix")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientId")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientName")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientUri")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<int?>("ConsentLifetime")
@@ -1421,7 +1364,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
+                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4");
 
                     b.Property<int>("DeviceCodeLifetime")
                         .HasColumnType("int");
@@ -1433,7 +1376,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("FrontChannelLogoutSessionRequired")
@@ -1441,7 +1384,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("FrontChannelLogoutUri")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4");
 
                     b.Property<int>("IdentityTokenLifetime")
                         .HasColumnType("int");
@@ -1465,16 +1408,16 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("LogoUri")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("PairWiseSubjectSalt")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProtocolType")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<int>("RefreshTokenExpiration")
                         .HasColumnType("int");
@@ -1502,7 +1445,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("UserCodeType")
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<int?>("UserSsoLifetime")
                         .HasColumnType("int");
@@ -1521,11 +1464,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "Type", "Value");
 
@@ -1539,7 +1482,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Origin")
                         .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("varchar(150) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "Origin");
 
@@ -1553,7 +1496,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("GrantType")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "GrantType");
 
@@ -1567,7 +1510,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Provider")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "Provider");
 
@@ -1581,7 +1524,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("PostLogoutRedirectUri")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "PostLogoutRedirectUri");
 
@@ -1595,11 +1538,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Key")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "Key", "Value");
 
@@ -1613,7 +1556,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("RedirectUri")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "RedirectUri");
 
@@ -1627,7 +1570,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Scope")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("ClientId", "Scope");
 
@@ -1641,15 +1584,15 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
+                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime(6)");
@@ -1668,12 +1611,12 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ClientId")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1687,37 +1630,37 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasMaxLength(10000)
-                        .HasColumnType("varchar(10000)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("DeviceCode")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("Expiration")
                         .IsRequired()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<string>("SessionId")
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<string>("SubjectId")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserCode")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1735,17 +1678,17 @@ namespace MigrationDemo.Migrations
                 {
                     b.Property<string>("Key")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClientId")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime?>("ConsumedTime")
@@ -1757,17 +1700,17 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasMaxLength(10000)
-                        .HasColumnType("varchar(10000)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<Guid>("Id")
@@ -1775,16 +1718,16 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("SessionId")
                         .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<string>("SubjectId")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4");
 
                     b.HasKey("Key");
 
@@ -1806,7 +1749,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1827,11 +1770,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
+                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4");
 
                     b.Property<string>("DisplayName")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Emphasize")
                         .HasColumnType("tinyint(1)");
@@ -1840,7 +1783,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -1860,7 +1803,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Required")
                         .HasColumnType("tinyint(1)");
@@ -1880,7 +1823,7 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Type")
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4");
 
                     b.HasKey("IdentityResourceId", "Type");
 
@@ -1894,11 +1837,11 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Key")
                         .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
 
                     b.HasKey("IdentityResourceId", "Key", "Value");
 
@@ -1914,17 +1857,17 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderKey")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -1946,20 +1889,20 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderKey")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderName")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(2048)
-                        .HasColumnType("varchar(2048)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1977,7 +1920,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(40)
-                        .HasColumnType("varchar(40)")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
@@ -1997,7 +1940,7 @@ namespace MigrationDemo.Migrations
                         .HasColumnName("DeletionTime");
 
                     b.Property<string>("ExtraProperties")
-                        .HasColumnType("longtext")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
@@ -2017,7 +1960,7 @@ namespace MigrationDemo.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -2033,25 +1976,16 @@ namespace MigrationDemo.Migrations
 
                     b.Property<string>("Name")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(1024)
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4");
 
                     b.HasKey("TenantId", "Name");
 
                     b.ToTable("AbpTenantConnectionStrings");
-                });
-
-            modelBuilder.Entity("MigrationDemo.Test.TempUser", b =>
-                {
-                    b.HasOne("MigrationDemo.Test.TempRole", "TempRole")
-                        .WithMany()
-                        .HasForeignKey("TempRoleId");
-
-                    b.Navigation("TempRole");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
