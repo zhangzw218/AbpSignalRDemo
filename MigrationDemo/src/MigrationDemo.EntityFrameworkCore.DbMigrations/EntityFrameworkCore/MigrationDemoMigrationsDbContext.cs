@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -28,7 +29,8 @@ namespace MigrationDemo.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            //builder.HasCharSet("utf8mb4");
+            builder.UseGuidCollation(string.Empty);
             /* Include modules to your migration db context */
 
             builder.ConfigurePermissionManagement();
