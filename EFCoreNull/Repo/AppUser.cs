@@ -1,10 +1,11 @@
 ﻿
+using Volo.Abp.Domain.Entities;
 using Volo.Abp.Identity;
 using Volo.Abp.Users;
 
 namespace EFCoreNull.Repo
 {
-    public class AppUser : IUser
+    public class AppUser : AggregateRoot<Guid>, IUser
     {
         public string? UserName { get; set; }
 
@@ -22,13 +23,7 @@ namespace EFCoreNull.Repo
 
         public bool PhoneNumberConfirmed { get; set; }
 
-        public Guid Id { get; set; }
-
         public Guid? TenantId { get; set; }
 
-        public object[] GetKeys()
-        {
-            return new List<object> { Id }.ToArray();
-        }
     }
 }
