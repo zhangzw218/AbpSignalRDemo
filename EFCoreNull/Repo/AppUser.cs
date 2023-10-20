@@ -5,7 +5,7 @@ using Volo.Abp.Users;
 
 namespace EFCoreNull.Repo
 {
-    public class AppUser : AggregateRoot<Guid>, IUser
+    public class AppUser : Entity<Guid>, IUser
     {
         public string? UserName { get; set; }
 
