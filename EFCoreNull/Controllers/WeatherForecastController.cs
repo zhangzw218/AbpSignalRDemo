@@ -1,3 +1,4 @@
+using EFCoreNull.Repo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.DependencyInjection;
@@ -27,10 +28,19 @@ namespace EFCoreNull.Controllers
                 var userRepo = _abpLazyServiceProvider.GetRequiredService<IRepository<IdentityUser>>();
                 var userQuery = await userRepo.GetQueryableAsync();
                 var user = await userQuery.FirstAsync();
+
+
+                var appUserRepo = _abpLazyServiceProvider.GetRequiredService<IRepository<AppUser>>();
+                var appUserQuery = await appUserRepo.GetQueryableAsync();
+                var appUser2 = await appUserQuery.AsNoTracking().FirstAsync();
+                var appUser = await appUserQuery.FirstAsync();
+
                 return new
                 {
                     UserCount = userQuery.Count(),
                     UserId = user.Id,
+                    AppUserCount = appUserQuery.Count(),
+                    AppUserId = appUser.Id,
                     DateTime = DateTime.Now
                 };
             }
