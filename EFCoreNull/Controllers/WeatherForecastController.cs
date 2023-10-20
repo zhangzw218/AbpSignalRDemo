@@ -1,4 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Identity;
+using Volo.Abp.Uow;
 
 namespace EFCoreNull.Controllers
 {
@@ -6,28 +11,29 @@ namespace EFCoreNull.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private IAbpLazyServiceProvider _abpLazyServiceProvider { get; }
+        public WeatherForecastController(IAbpLazyServiceProvider abpLazyServiceProvider)
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
+            _abpLazyServiceProvider = abpLazyServiceProvider;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [UnitOfWork]
+        public async Task<object> GetAsync()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var uowManager = _abpLazyServiceProvider.GetRequiredService<IUnitOfWorkManager>();
+            using(var uow = uowManager.Begin())
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var userRepo = _abpLazyServiceProvider.GetRequiredService<IRepository<IdentityUser>>();
+                var userQuery = await userRepo.GetQueryableAsync();
+                var user = await userQuery.FirstAsync();
+                return new
+                {
+                    UserCount = userQuery.Count(),
+                    UserId = user.Id,
+                    DateTime = DateTime.Now
+                };
+            }
         }
     }
 }
