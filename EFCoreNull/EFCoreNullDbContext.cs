@@ -5,6 +5,7 @@ using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
 using EFCoreNull.Repo;
+using Volo.Abp.Users;
 
 namespace EFCoreNull
 {
@@ -24,7 +25,10 @@ namespace EFCoreNull
             {
                 b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users");
                 b.ConfigureByConvention();
-                b.ConfigureAbpUser();
+                b.Property(u => u.UserName)
+                    .IsRequired()
+                    .HasMaxLength(AbpUserConsts.MaxUserNameLength)
+                    .HasColumnName("UserName");
                 b.HasOne<IdentityUser>().WithOne().HasForeignKey<IdentityUser>(a => a.Id);
             });
 
